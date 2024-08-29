@@ -19,7 +19,8 @@ plugins {
 
 android {
     namespace 'com.practice.code.imageplace'
-    compileSdk 34
+    compileSdkVersion 34
+    buildToolsVersion "33.0.0"
 
     defaultConfig {
         minSdk 24
@@ -64,7 +65,7 @@ dependencies {
     def lottieVersion = "6.3.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
-    implementation 'com.github.bumptech.glide:glide:4.16.0'
+//    implementation 'com.github.bumptech.glide:glide:4.16.0'
 }
 
 publishing {

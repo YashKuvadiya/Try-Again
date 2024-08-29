@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,15 +13,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
-import androidx.annotation.Nullable;
-
 import com.airbnb.lottie.LottieAnimationView;
 import com.airbnb.lottie.LottieDrawable;
 import com.airbnb.lottie.LottieListener;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 
 public class ImageInflateLayout extends RelativeLayout {
     private RelativeLayout layoutCommonImage;
@@ -132,49 +125,50 @@ public class ImageInflateLayout extends RelativeLayout {
                     public void onAnimationRepeat(Animator animation) {
                     }
                 });
-            } else if (image.contains("gif")) {
-                ivCommonGIF.setVisibility(View.VISIBLE);
-                ltCommonLottie.setVisibility(View.GONE);
-                ivCommonImage.setVisibility(View.GONE);
-                Glide.with(context)
-                        .load(image)
-                        .listener(new RequestListener<Drawable>() {
-                            @Override
-                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                                return false;
-                            }
-
-                            @Override
-                            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, com.bumptech.glide.load.DataSource dataSource, boolean isFirstResource) {
-                                if (commonProgressBar != null) {
-                                    commonProgressBar.setVisibility(View.GONE);
-                                }
-                                return false;
-                            }
-                        })
-                        .into(ivCommonGIF);
-            } else {
-                ivCommonGIF.setVisibility(View.GONE);
-                ltCommonLottie.setVisibility(View.GONE);
-                ivCommonImage.setVisibility(View.VISIBLE);
-                Glide.with(context)
-                        .load(image)
-                        .listener(new RequestListener<Drawable>() {
-                            @Override
-                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                                return false;
-                            }
-
-                            @Override
-                            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, com.bumptech.glide.load.DataSource dataSource, boolean isFirstResource) {
-                                if (commonProgressBar != null) {
-                                    commonProgressBar.setVisibility(View.GONE);
-                                }
-                                return false;
-                            }
-                        })
-                        .into(ivCommonImage);
             }
+//            else if (image.contains("gif")) {
+//                ivCommonGIF.setVisibility(View.VISIBLE);
+//                ltCommonLottie.setVisibility(View.GONE);
+//                ivCommonImage.setVisibility(View.GONE);
+//                Glide.with(context)
+//                        .load(image)
+//                        .listener(new RequestListener<Drawable>() {
+//                            @Override
+//                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+//                                return false;
+//                            }
+//
+//                            @Override
+//                            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, com.bumptech.glide.load.DataSource dataSource, boolean isFirstResource) {
+//                                if (commonProgressBar != null) {
+//                                    commonProgressBar.setVisibility(View.GONE);
+//                                }
+//                                return false;
+//                            }
+//                        })
+//                        .into(ivCommonGIF);
+//            } else {
+//                ivCommonGIF.setVisibility(View.GONE);
+//                ltCommonLottie.setVisibility(View.GONE);
+//                ivCommonImage.setVisibility(View.VISIBLE);
+//                Glide.with(context)
+//                        .load(image)
+//                        .listener(new RequestListener<Drawable>() {
+//                            @Override
+//                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+//                                return false;
+//                            }
+//
+//                            @Override
+//                            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, com.bumptech.glide.load.DataSource dataSource, boolean isFirstResource) {
+//                                if (commonProgressBar != null) {
+//                                    commonProgressBar.setVisibility(View.GONE);
+//                                }
+//                                return false;
+//                            }
+//                        })
+//                        .into(ivCommonImage);
+//            }
         } else {
             layoutCommonImage.setVisibility(GONE);
         }
