@@ -1,5 +1,6 @@
 package com.practice.code.imageplace;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -15,6 +16,9 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 
+import com.airbnb.lottie.LottieAnimationView;
+import com.airbnb.lottie.LottieDrawable;
+import com.airbnb.lottie.LottieListener;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
@@ -23,7 +27,7 @@ import com.bumptech.glide.request.target.Target;
 public class ImageInflateLayout extends RelativeLayout {
     private RelativeLayout layoutCommonImage;
     private ImageView ivCommonImage, ivCommonGIF;
-//    private LottieAnimationView ltCommonLottie;
+    private LottieAnimationView ltCommonLottie;
     private ProgressBar commonProgressBar;
     private int progressBarColor, imageScaleType, lottieScaleType;
     private boolean lottieLoop, lottieAutoPlay;
@@ -50,7 +54,7 @@ public class ImageInflateLayout extends RelativeLayout {
         layoutCommonImage = findViewById(R.id.layoutCommonImage);
         ivCommonImage = findViewById(R.id.ivCommonImage);
         ivCommonGIF = findViewById(R.id.ivCommonGIF);
-//        ltCommonLottie = findViewById(R.id.ltCommonLottie);
+        ltCommonLottie = findViewById(R.id.ltCommonLottie);
         commonProgressBar = findViewById(R.id.commonProgressBar);
     }
 
@@ -60,7 +64,7 @@ public class ImageInflateLayout extends RelativeLayout {
         layoutCommonImage = findViewById(R.id.layoutCommonImage);
         ivCommonImage = findViewById(R.id.ivCommonImage);
         ivCommonGIF = findViewById(R.id.ivCommonGIF);
-//        ltCommonLottie = findViewById(R.id.ltCommonLottie);
+        ltCommonLottie = findViewById(R.id.ltCommonLottie);
         commonProgressBar = findViewById(R.id.commonProgressBar);
 
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(
@@ -102,34 +106,33 @@ public class ImageInflateLayout extends RelativeLayout {
     public void Inflate(Context context, String image) {
         if (image != null && !isStringNullOrEmpty(image)) {
             layoutCommonImage.setVisibility(VISIBLE);
-//            if (image.contains(".json")) {
-//                ivCommonGIF.setVisibility(View.GONE);
-//                ivCommonImage.setVisibility(View.GONE);
-//                setLottieAnimation(ltCommonLottie, image);
-//                ltCommonLottie.setRepeatCount(LottieDrawable.INFINITE);
-//                ltCommonLottie.playAnimation();
-//                ltCommonLottie.addAnimatorListener(new Animator.AnimatorListener() {
-//                    @Override
-//                    public void onAnimationStart(Animator animation) {
-//                        if (commonProgressBar != null) {
-//                            commonProgressBar.setVisibility(View.GONE);
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onAnimationEnd(Animator animation) {
-//                    }
-//
-//                    @Override
-//                    public void onAnimationCancel(Animator animation) {
-//                    }
-//
-//                    @Override
-//                    public void onAnimationRepeat(Animator animation) {
-//                    }
-//                });
-//            } else
-                if (image.contains("gif")) {
+            if (image.contains(".json")) {
+                ivCommonGIF.setVisibility(View.GONE);
+                ivCommonImage.setVisibility(View.GONE);
+                setLottieAnimation(ltCommonLottie, image);
+                ltCommonLottie.setRepeatCount(LottieDrawable.INFINITE);
+                ltCommonLottie.playAnimation();
+                ltCommonLottie.addAnimatorListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+                        if (commonProgressBar != null) {
+                            commonProgressBar.setVisibility(View.GONE);
+                        }
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animation) {
+                    }
+                });
+            } else if (image.contains("gif")) {
                 ivCommonGIF.setVisibility(View.VISIBLE);
 //                ltCommonLottie.setVisibility(View.GONE);
                 ivCommonImage.setVisibility(View.GONE);
@@ -180,17 +183,17 @@ public class ImageInflateLayout extends RelativeLayout {
         return (text == null || text.trim().equals("null") || text.trim()
                 .length() <= 0);
     }
-//    public void setLottieAnimation(LottieAnimationView ivLottie, String image) {
-//        try {
-//            ivLottie.setFailureListener(new LottieListener<Throwable>() {
-//                @Override
-//                public void onResult(Throwable result) {
-//
-//                }
-//            });
-//            ivLottie.setAnimationFromUrl(image);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public void setLottieAnimation(LottieAnimationView ivLottie, String image) {
+        try {
+            ivLottie.setFailureListener(new LottieListener<Throwable>() {
+                @Override
+                public void onResult(Throwable result) {
+
+                }
+            });
+            ivLottie.setAnimationFromUrl(image);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

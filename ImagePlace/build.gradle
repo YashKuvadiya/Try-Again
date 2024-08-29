@@ -1,17 +1,17 @@
 
-buildscript {
-    ext.kotlin_version = "1.7.20"
-    repositories {
-        google()
-        mavenCentral()
-        mavenLocal()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.0.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-
+//buildscript {
+//    ext.kotlin_version = "1.7.20"
+//    repositories {
+//        google()
+//        mavenCentral()
+//        mavenLocal()
+//    }
+//    dependencies {
+//        classpath 'com.android.tools.build:gradle:8.0.2'
+//        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+//    }
+//}
+//
 plugins {
     id 'com.android.library'
     id 'maven-publish'
@@ -43,16 +43,16 @@ android {
     }
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
+//java {
+//    toolchain {
+//        languageVersion = JavaLanguageVersion.of(17)
+//    }
+//}
+//
+//java {
+//    sourceCompatibility = JavaVersion.VERSION_17
+//    targetCompatibility = JavaVersion.VERSION_17
+//}
 
 dependencies {
 
@@ -62,28 +62,28 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 
-//    def lottieVersion = "6.3.0"
-//    implementation "com.airbnb.android:lottie:$lottieVersion"
+    def lottieVersion = "6.3.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 
     implementation 'com.github.bumptech.glide:glide:4.16.0'
 }
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = 'com.github.YashKuvadiya'
-            artifactId = 'ImagePlace'
-            version = "1.0.0"
-
-            artifact("$buildDir/outputs/aar/ImagePlace-release.aar")
-            pom {
-                description = 'Try Again'
-            }
-        }
-    }
-    repositories {
-        maven {
-            url = uri("$buildDir/repo")
-        }
-    }
-}
+//publishing {
+//    publications {
+//        maven(MavenPublication) {
+//            groupId = 'com.github.YashKuvadiya'
+//            artifactId = 'ImagePlace'
+//            version = "1.0.0"
+//
+//            artifact("$buildDir/outputs/aar/ImagePlace-release.aar")
+//            pom {
+//                description = 'Try Again'
+//            }
+//        }
+//    }
+//    repositories {
+//        maven {
+//            url = uri("$buildDir/repo")
+//        }
+//    }
+//}
