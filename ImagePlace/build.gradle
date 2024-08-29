@@ -68,9 +68,16 @@ publishing {
             groupId = 'com.github.YashKuvadiya'
             artifactId = 'ImagePlace'
             version = "1.0"
+
+            artifact("$buildDir/outputs/aar/ImagePlace-release.aar")
             pom {
                 description = 'Try Again'
             }
+        }
+    }
+    repositories {
+        maven {
+            url = uri("$buildDir/repo")
         }
     }
 }
