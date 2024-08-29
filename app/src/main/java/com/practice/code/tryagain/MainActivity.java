@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.practice.code.imageplace.HelloWorld;
+import com.practice.code.imageplace.ImageInflateLayout;
 
 public class MainActivity extends AppCompatActivity {
 

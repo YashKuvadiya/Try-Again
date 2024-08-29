@@ -25,10 +25,10 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
 public class ImageInflateLayout extends RelativeLayout {
-    private RelativeLayout layoutCommonImage;
-    private ImageView ivCommonImage, ivCommonGIF;
-    private LottieAnimationView ltCommonLottie;
-    private ProgressBar commonProgressBar;
+    private static RelativeLayout layoutCommonImage;
+    private static ImageView ivCommonImage, ivCommonGIF;
+    private static LottieAnimationView ltCommonLottie;
+    private static ProgressBar commonProgressBar;
     private int progressBarColor, imageScaleType, lottieScaleType;
     private boolean lottieLoop, lottieAutoPlay;
     private float progressBarSize;
@@ -103,7 +103,7 @@ public class ImageInflateLayout extends RelativeLayout {
         float density = getResources().getDisplayMetrics().density;
         return Math.round(dp * density);
     }
-    public void Inflate(Context context, String image) {
+    public static void Inflate(Context context, String image) {
         if (image != null && !isStringNullOrEmpty(image)) {
             layoutCommonImage.setVisibility(VISIBLE);
             if (image.contains(".json")) {
@@ -179,11 +179,11 @@ public class ImageInflateLayout extends RelativeLayout {
             layoutCommonImage.setVisibility(GONE);
         }
     }
-    public boolean isStringNullOrEmpty(String text) {
+    public static boolean isStringNullOrEmpty(String text) {
         return (text == null || text.trim().equals("null") || text.trim()
                 .length() <= 0);
     }
-    public void setLottieAnimation(LottieAnimationView ivLottie, String image) {
+    public static void setLottieAnimation(LottieAnimationView ivLottie, String image) {
         try {
             ivLottie.setFailureListener(new LottieListener<Throwable>() {
                 @Override
