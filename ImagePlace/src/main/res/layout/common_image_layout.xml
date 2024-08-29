@@ -9,7 +9,6 @@
         android:id="@+id/commonProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/Progressbar.Black"
         android:layout_centerInParent="true"/>
 
     <ImageView
@@ -20,14 +19,14 @@
         android:adjustViewBounds="true"
         android:scaleType="fitXY" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/ltCommonLottie"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:layout_centerInParent="true"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true" />
+<!--    <com.airbnb.lottie.LottieAnimationView-->
+<!--        android:id="@+id/ltCommonLottie"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:adjustViewBounds="true"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        app:lottie_autoPlay="true"-->
+<!--        app:lottie_loop="true" />-->
 
     <ImageView
         android:id="@+id/ivCommonGIF"
